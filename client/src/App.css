@@ -1,0 +1,105 @@
+.student-main,.professor-main {
+  height: auto;
+  width: 900px;
+  position: relative;
+  left:250px;
+  top:50px
+}
+form{
+  margin: 20px 0;
+}
+.input-field{
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-family: inherit;
+}
+.input-field:focus{
+  border-color: #66afe9;
+  outline: none
+}
+.input-btn{
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; 
+  margin-top: 10px;
+}
+.input-btn :hover{
+  background-color: #3e8e41; 
+}
+table {
+  border-collapse: collapse;
+  border: 0; 
+  width: 100%;
+  margin-top: 10px;
+}
+th{
+  text-align: left;
+
+}
+th, td {
+  border: 0; 
+  padding: 5px; 
+  margin-left: 60px;
+  font-size: large;
+  margin-bottom: 40px;
+  width: 700px;
+}
+.register-btn {
+  background-color: #fff;
+  color: #4CAF50; 
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid #4CAF50; 
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 3 0px;
+}
+
+.register-btn:hover {
+  background-color: #f2f2f2; 
+  border-color: #3e8e41; 
+}
+.err-msg{
+  color: #b32424; 
+  background-color: #f8d7da; 
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 5px 0; 
+  font-weight: bold
+
+}
+.fa-exclamation:before {
+  content: "\21";
+  margin-right: 10px;
+}
+.home-btn{
+  position: relative;
+  top: 54px;
+  left: 310px;
+}
+.link-btn{
+  color: inherit; /* Inherits the color from its parent */
+  text-decoration: none;
+  font-size: x-large;
+  position: relative;
+  left:1100px
+}
+
+.find-input {
+  /* Basic styling */
+  width: 160px;  
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px; 
+  font-size: 16px;
+  margin: 10px 0;
+}
