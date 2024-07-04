@@ -76,6 +76,20 @@ const Professor = (props) => {
       });
     }
   };
+  const handleDelete = (empID) => {
+    fetch(`${baseUrl}/delete/${empID}`, {
+      method: 'DELETE',
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      setPostProfessorData(postProfessorData.filter(professor => professor.rollnumber !== empID));
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  };
 
   return (
     <div className="professor-main">
@@ -165,6 +179,7 @@ const Professor = (props) => {
               <td>{professor.name}</td>
               <td>{professor.email}</td>
               <td>{professor.empID}</td>
+              <td><button  onClick={()=>{handleDelete(professor.empID)}}> Delete</button></td>
             </tr>
           ))}
         </tbody>
