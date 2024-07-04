@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Student = (props) => {
+  const baseUrl="http://localhost:8080/students"
   const [filter, setFilter] = useState('');
-  
-  const [data, setData] = useState([]);
+  const [studentList, setStudentList] = useState([]);
   const [postStudentData, setPostStudentData] = useState({
     name: '',
     email: '',
@@ -15,22 +15,23 @@ const Student = (props) => {
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState('');
   const [clientError,setClientError]= useState('');
+
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
   
-  const filteredData = data.filter(student =>
+  const filteredData = studentList.filter(student =>
     student.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   useEffect(() => {
-    fetch("http://localhost:8080/students/student")
+    fetch(`${baseUrl}/all`)
       .then((res) => res.json())
-      .then((data) => {
-        setData(data);
+      .then((studentList) => {
+        setStudentList(studentList);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching studentList:", error);
       });
   }, []);
   
@@ -53,7 +54,7 @@ const Student = (props) => {
     
    if(!clientError)  {
 
-     fetch('http://localhost:8080/students/add', {
+     fetch(`${baseUrl}/add`, {
        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -75,6 +76,20 @@ const Student = (props) => {
       
       });
     }
+  };
+  const handleDelete = (rollNumber) => {
+    fetch(`${baseUrl}/delete/${rollNumber}`, {
+      method: 'DELETE',
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      setStudentList(studentList.filter(student => student.rollnumber !== rollNumber));
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
   };
 
   return (<div>
@@ -166,6 +181,7 @@ const Student = (props) => {
               <td>{student.name}</td>
               <td>{student.email}</td>
               <td>{student.rollnumber}</td>
+              <td><button  onClick={()=>{handleDelete(student.rollnumber)}}> Delete</button></td>
             </tr>
           ))}
         </tbody>

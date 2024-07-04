@@ -9,7 +9,7 @@ function RoutePort() {
     <Router>
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={<Student />} />
+        <Route path="/student" element={<Student />} />
         <Route path="/professor" element={<Professor />} />
       </Routes>
     </Router>

@@ -30,5 +30,19 @@ router.post("/add",async(req,res)=>{
     }
 
 })
+router.delete("/delete/:empID",async(req,res)=>{
+    let emp= req.query.params.empID
+    try{
+        const dbRes = await Students.deleteOne({empID:emp});
+        res.status(200).json({
+            status:'sucess',
+            message:`Deleted ${emp}`
+        })
+    }catch(e){
+        res.status(500).json({
+            message:e.message
+        })
+    }
 
+})
 module.exports = router

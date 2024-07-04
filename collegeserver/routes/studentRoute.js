@@ -3,7 +3,7 @@ const Students = require('../modules/studentschema')
 
 const router = express.Router();
 
-router.get("/student",async(req,res)=>{
+router.get("/all",async(req,res)=>{
     try{
     const students = await Students.find();
     res.status(200).json(
@@ -25,6 +25,21 @@ router.post("/add",async(req,res)=>{
         })
     }catch(e){
         res.status(401).json({
+            message:e.message
+        })
+    }
+
+})
+router.delete("/delete/:rollNumber",async(req,res)=>{
+    let roll = req.params.rollNumber
+    try{
+        const dbRes = await Students.deleteOne({rollnumber:roll});
+        res.status(200).json({
+            status:'sucess', 
+            message:`Deleted ${roll}`
+        })
+    }catch(e){
+        res.status(500).json({
             message:e.message
         })
     }

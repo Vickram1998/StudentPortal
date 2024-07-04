@@ -6,7 +6,7 @@ const professor = require("./routes/professorRoute")
 const cors = require('cors');
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/collegeserver',{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/collegeserver')
 .then(() => console.log('MongoDB is connected'))
 .catch(err => console.log('Failed to connect to MongoDB:', err));
 
